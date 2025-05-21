@@ -1,0 +1,33 @@
+<%- include('partials/header', { title: 'Projects - Bisheshwar Das', user: user, active: 'projects' }) %>
+
+<header class="glass text-center py-5 mb-4">
+  <div class="container">
+    <h1 class="display-4 ">My Projects</h1>
+    <p class="lead">Here are some of the projects I have worked on.</p>
+  </div>
+</header>
+
+
+<section class="container py-5">
+  <div class="row">
+    <% if (projects && projects.length > 0) { %>
+      <% projects.forEach(project => { %>
+        <div class="col-md-4 mb-4">
+          <div class="glass-card p-3 h-100">
+            <div class="card-body">
+              <h5 class="card-title"><%= project.title %></h5>
+              <p class="card-text"><%= project.description %></p>
+              <% if (project.github_url) { %>
+                <a href="<%= project.github_url %>" class="btn btn-primary" target="_blank" rel="noopener">View Project</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p>No projects found.</p>
+    <% } %>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

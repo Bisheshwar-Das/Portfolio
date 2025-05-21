@@ -1,0 +1,119 @@
+<%- include('partials/header', { title: 'Home - Bisheshwar Das', user: user, active: 'home' }) %>
+
+<!-- Hero Section with Parallax and Particles -->
+<div class="parallax position-relative d-flex align-items-center justify-content-center text-white text-center" style="overflow: hidden;">
+  <div id="particles-js" class="position-absolute w-100 h-100" style="top:0; left:0; z-index:0;"></div>
+  <div class="container position-relative" data-aos="fade-up" data-aos-duration="1200" style="z-index:1;">
+    <div class="bg-dark bg-opacity-50 p-5 rounded">
+      <h1 class="display-4 fw-bold">Hi, I’m Bisheshwar Das</h1>
+      <p class="lead"><span id="typed-text"></span></p>
+      <a href="/projects" class="btn btn-warning btn-lg mt-3">Explore Projects</a>
+    </div>
+  </div>
+</div>
+
+<!-- About Me Section -->
+<section class="container py-5" id="about">
+  <div class="row align-items-center">
+    <div class="col-md-5 mb-4 mb-md-0 text-center" data-aos="fade-right" data-aos-duration="200">
+      <img src="/images/me.jpg" alt="Bisheshwar Das" class="img-fluid rounded-circle shadow" style="max-width: 300px;">
+    </div>
+    <div class="col-md-7" data-aos="fade-left" data-aos-duration="400">
+      <h2 class="mb-3">About Me</h2>
+      <p>
+        I’m <strong>Bisheshwar Das</strong>, a passionate web developer specializing in JavaScript, Node.js, and full-stack web applications. I enjoy building clean, functional websites that make an impact.
+      </p>
+      <p>
+        When I’m not coding, I enjoy exploring new technologies, contributing to open-source, and sharpening my problem-solving skills through projects and learning.
+      </p>
+      <a href="/about" class="btn btn-outline-primary mt-3">Read More</a>
+    </div>
+  </div>
+</section>
+
+<!-- Latest Projects -->
+<section class="container py-5">
+  <h2 class="mb-4 text-center">Latest Projects</h2>
+  <div class="row justify-content-center">
+    <% if (projects && projects.length > 0) { %>
+      <% projects.slice(0, 3).forEach(project => { %>
+        <div class="col-md-4 mb-4" data-aos="zoom-in">
+          <div class="card h-100 glass-card">
+            <div class="card-body">
+              <h5 class="card-title"><%= project.title %></h5>
+              <p class="card-text"><%= project.description.substring(0, 80) %>...</p>
+              <a href="/projects" class="btn btn-sm btn-outline-primary">View</a>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p class="text-center">No projects to show yet.</p>
+    <% } %>
+  </div>
+</section>
+
+<!-- Skills Section -->
+<section class="container py-5">
+  <h2 class="mb-4 text-center">My Skills</h2>
+  <div class="row justify-content-center">
+    <% if (skills && skills.length > 0) { %>
+      <% skills.forEach(skill => { %>
+        <div class="col-6 col-md-4 col-lg-3 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+              <h5 class="card-title mb-0"><%= skill.name %></h5>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p class="text-center">No skills found.</p>
+    <% } %>
+  </div>
+</section>
+
+<!-- Collaborate CTA -->
+<section class="text-center py-5 glass" data-aos="fade-in">
+  <div class="container">
+    <h3 class="mb-3">Want to collaborate?</h3>
+    <a href="/contact" class="btn btn-outline-primary btn-lg">Let’s Talk</a>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+
+
+<!-- Typed.js for animated intro text -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+  new Typed("#typed-text", {
+    strings: ["Crafting digital experiences.", "Full-stack developer.", "Adventerur", "JavaScript soul"],
+    typeSpeed: 50,
+    backSpeed: 25,
+    loop: true
+  });
+</script>
+
+<!-- Smooth scroll for anchor links -->
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+<!-- Particles.js for animated hero background -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<script>
+  particlesJS('particles-js', {
+    particles: {
+      number: { value: 50 },
+      size: { value: 3 },
+      move: { speed: 1 },
+      line_linked: { enable: true, distance: 150, opacity: 0.2 }
+    }
+  });
+</script>

@@ -1,0 +1,26 @@
+<%- include('partials/header', { title: title, user: user, active: 'contact' }) %>
+
+<section class="container py-5">
+  <h1 class="mb-4">Contact Me</h1>
+  <form method="POST" action="/contact">
+    <div class="mb-3">
+      <label for="name" class="form-label">Your Name</label>
+      <input type="text" name="name" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Your Email</label>
+      <input type="email" name="email" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label for="message" class="form-label">Message</label>
+      <textarea name="message" class="form-control" rows="5" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+  </form>
+</section>
+<% if (typeof success !== 'undefined') { %>
+  <div class="alert alert-success"><%= success %></div>
+<% } %>
+
+
+<%- include('partials/footer') %>
