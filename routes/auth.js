@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const router = express.Router();
-const db = require('../db'); // adjust if your db file path differs
+const db = require('../tmp/db'); // adjust if your db file path differs
 
 router.get('/login', (req, res) => {
   res.render('login', { user: req.session.user, error: null });
