@@ -1,7 +1,7 @@
 const express = require('express');
 const session = require('express-session');
+require('dotenv').config();
 const path = require('path');
-const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -15,7 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Session setup
 app.use(session({
-  secret: 'your_secret_key_here',
+  secret: process.env.SESSION_SECRET || 'some-default-secret',
   resave: false,
   saveUninitialized: false
 }));
