@@ -51,13 +51,15 @@ const contactRouter = require('./routes/contact');
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
-app.use('/projects', projectsRouter);
+app.use('/projects', projectsRouter); 
 app.use('/admin', adminRoutes);
 app.use('/about', aboutRouter);
 app.use('/contact', contactRouter);
 
 // Start server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
+// const PORT = process.env.PORT || 3000;
+// app.listen(PORT, () => {
+//   console.log(`Server running at http://localhost:${PORT}`);
+// });
+
+module.exports = app;
